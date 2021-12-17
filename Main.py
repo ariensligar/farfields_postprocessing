@@ -25,7 +25,7 @@ import pyvista as pv
 
 
 project_name = "5ghz_array"
-design_name = "triangular_lattice"
+design_name = "triangular_lattice_small"
 solution_setup_name = 'Setup1 : LastAdaptive'
 ff_setup_name = 'Infinite Sphere1'
 freq = 5e9

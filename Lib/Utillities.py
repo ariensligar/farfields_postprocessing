@@ -9,9 +9,7 @@ inculdes some simple functions that are used for various tasks
 """
 
 import numpy as np
-import os
 import datetime
-import json
 import csv
 
 def diff(li1, li2): 

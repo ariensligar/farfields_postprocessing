@@ -8,12 +8,13 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
-from datetime import date
+
 from matplotlib import cm
 import pyvista as pv
 import math
-import copy
+
 import Lib.Utillities as utils
+import time as walltime
 
 class Report_Module():
     def __init__(self,aedt,data,eep_data):
@@ -179,6 +180,9 @@ class Report_Module():
         return fig1, ax1
         
     def get_geometry(self,is_antenna_array=True):
+        
+        time_before = walltime.time()
+        print('Exporting Geometry...')
         oEditor = self.aedtapp.odesign.SetActiveEditor("3D Modeler")
         
         #obj is being exported as model units, scaling factor needed for display
@@ -245,6 +249,8 @@ class Report_Module():
             print('WARNING: Unable to display CAD Geometry, ' + cad_file + ' is not found')
         
         self.all_max = np.max(np.array([self.xmax,self.ymax,self.zmax]))
+        elapsed_time = walltime.time()-time_before
+        print(f'Exporting Geometry...Done: {elapsed_time}seconds')
         return meshes
 
     

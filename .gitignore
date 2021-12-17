@@ -3,6 +3,7 @@ example_projects/*.aedb/
 example_projects/*.aedt/
 *.aedtresults/
 example_projects/*.lock
+example_projects/*.auto
 __pycache__/
 /**/__pycache__/
 **/__pycache__/

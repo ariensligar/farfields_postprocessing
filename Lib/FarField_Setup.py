@@ -8,7 +8,7 @@ Created on Tue Sep 14 11:43:07 2021
 import numpy as np
 import os
 import Lib.Utillities as utils
-
+import time as walltime
 class FarField_Utils():
     '''
     Various function used to extract far field from HFSS. Including creating
@@ -78,24 +78,7 @@ class FarField_Utils():
             oModule.InsertFarFieldSphereSetup(setup_params)
         self.name = setup_name
         return setup_name
-    def get_antenna_parameters(self,sol_setup_name,ff_setup_name,freq):
-        max_antenna_params_dict = {}
-        qtys = ['PeakDirectivity','PeakGain','PeakRealizedGain','RadiatedPower','AcceptedPower','IncidentPower']
-        oDesign = self.aedtapp.odesign
-        oModule = oDesign.GetModule("ReportSetup")
-        ctxt = ['Context:=',ff_setup_name]
-        #sweeps=['Theta:=',['All'],'Phi:=',['All'],'Freq:=',[freq]]
-        sweeps=['Freq:=',[freq]]
-        for qty in qtys:
-            try:
-                solnData = oModule.GetSolutionDataPerVariation('Antenna Parameters', sol_setup_name, ctxt, sweeps, qty)
-                data = solnData[0].GetRealDataValues(qty)
-                max_antenna_params_dict[qty] = data[0]
-            except:
-                print("ERROR: exporting antenna parameters failed")
-                return False
 
-        return max_antenna_params_dict
     
 
     def get_lattice_vectors(self,modelel_units='mm'):
@@ -136,6 +119,7 @@ class FarField_Utils():
 
         if (overwrite or not file_exists):
             print('Exporting Embedded Element Patterns...')
+            time_before = walltime.time()
             oModule.ExportElementPatternToFile(
                 [
                     "ExportFileName:="    , export_path  + exported_name_base + '.ffd',
@@ -144,7 +128,8 @@ class FarField_Utils():
                     "DesignVariationKey:="    , "",
                     "SolutionName:="    , setup_name
                 ])
-            print('Exporting Embedded Element Patterns...Done')
+            elapsed_time = walltime.time()-time_before
+            print(f'Exporting Embedded Element Patterns...Done: {elapsed_time}seconds')
         else:
             print('Using Exisiting Embedded Element Patterns')
         if os.path.exists(export_path + '/' + exported_name_map):
