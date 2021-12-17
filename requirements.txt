@@ -1,0 +1,10 @@
+matplotlib
+numpy
+pyaedt==0.4.17
+pythonnet
+pywin32
+pyvista
+scipy
+streamlit
+spyder-kernels==2.2.0
+
