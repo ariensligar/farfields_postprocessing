@@ -393,6 +393,123 @@ class Load_FF_Fields():
         
         return self.all_qtys
     
+    
+    def beamform_2beams(self,phi_scan1=0,theta_scan1=0,phi_scan2=0,theta_scan2=0):
+        '''
+        Returns far field pattern calculated for a specific phi/scan angle requested.
+        This is calculated based on the lattice vector spacing and the embedded element
+        patterns of a ca-ddm or fa-ddm array in HFSS.
+
+        Parameters:
+
+
+                phi_scan (float/int): spherical cs for desired scan angle of beam
+                theta_scan (float/int): spherical cs for desired scan angle of beam
+
+        Returns:
+                all_qtys (dict): dictionary with reTheta, rePhi,RealizedGain, theta,phi output
+        '''
+        num_ports = len(self.all_port_names)
+        self.FindArrayCenterAndEdge()
+
+        c=299792458
+        k = (2*math.pi*self.freq)/c
+
+        #---------------------- METHOD : CalculatePhaseShifts -------------------
+        # Calculates phase shifts between array elements in A and B directions,
+        # PhaseShiftA and PhaseShiftB, given Wave Vector (k), lattice vectors
+        # (Ax, Ay, Bx, By), Scan angles (theta, phi) using formula below
+        # Phase Shift A = - (Ax*k*sinθ*cosφ + Ay*k*sinθ*sinφ)
+        # Phase Shift B = - (Bx*k*sinθ*cosφ + By*k*sinθ*sinφ)
+        #------------------------------------------------------------------------
+        
+        
+        theta_scan1 = math.radians(theta_scan1)
+        phi_scan1 = math.radians(phi_scan1)
+        
+        theta_scan2 = math.radians(theta_scan2)
+        phi_scan2 = math.radians(phi_scan2)
+
+        phase_shift_A_rad1 = -1*( (self.Ax*k*math.sin(theta_scan1)*math.cos(phi_scan1)) 
+                                 + (self.Ay*k*math.sin(theta_scan1)*math.sin(phi_scan1)) )
+        phase_shift_B_rad1 = -1*( (self.Bx*k*math.sin(theta_scan1)*math.cos(phi_scan1)) 
+                                 + (self.By*k*math.sin(theta_scan1)*math.sin(phi_scan1)) )
+        
+        phase_shift_A_rad2 = -1*( (self.Ax*k*math.sin(theta_scan2)*math.cos(phi_scan2)) 
+                                 + (self.Ay*k*math.sin(theta_scan2)*math.sin(phi_scan2)) )
+        phase_shift_B_rad2 = -1*( (self.Bx*k*math.sin(theta_scan2)*math.cos(phi_scan2)) 
+                                 + (self.By*k*math.sin(theta_scan2)*math.sin(phi_scan2)) )
+        
+
+        
+        w_dict ={}
+        w_dict_ang = {}
+        w_dict_mag = {}
+        array_positions = {}
+        for port_name in self.all_port_names:
+
+            index_str = self.GetArrayIndex(port_name)
+            a = int(index_str[0])
+            b = int(index_str[1])
+            w_mag1 = np.round(np.abs(self.AssignWeight(a, b,taper=self.taper)),3)
+            w_ang1 = (a*phase_shift_A_rad1+b*phase_shift_B_rad1)
+            
+            w_mag2 = np.round(np.abs(self.AssignWeight(a, b,taper=self.taper)),3)
+            w_ang2 = (a*phase_shift_A_rad2+b*phase_shift_B_rad2)
+            
+            # ToDo check for driven modal or terminal
+            w_dict[port_name] = np.sqrt(w_mag1)*np.exp(1j*w_ang1)+np.sqrt(w_mag2)*np.exp(1j*w_ang2)
+            w_dict_ang[port_name] = np.angle(w_dict[port_name])
+            w_dict_mag[port_name] = np.abs(w_dict[port_name])
+            
+            array_positions[port_name] = self.ElementPosition(a,b)
+
+
+        length_of_ff_data = len(self.data_dict[self.all_port_names[0]]['rETheta']) #check lenght of data by usingfirst port
+        
+        rEtheta_fields= np.zeros((num_ports,length_of_ff_data),dtype=complex)
+        rEphi_fields= np.zeros((num_ports,length_of_ff_data),dtype=complex)
+        w= np.zeros((1,num_ports),dtype=complex)
+        #create port mapping
+        for n, port in enumerate(self.all_port_names):
+            re_theta = self.data_dict[port]['rETheta'] #this is re_theta index of loaded data
+            re_phi = self.data_dict[port]['rEPhi'] #this is re_ohi index of loaded data
+        
+            w[0][n]=w_dict[port] #build 1xNumPorts array of weights
+        
+            rEtheta_fields[n] = re_theta
+            rEphi_fields[n] = re_phi
+        
+            theta_range=self.data_dict[port]['Theta']
+            phi_range=self.data_dict[port]['Phi']
+            Ntheta=len(theta_range)
+            Nphi=len(phi_range)
+        
+        rEtheta_fields_sum = np.dot(w,rEtheta_fields)
+        rEtheta_fields_sum  = np.reshape(rEtheta_fields_sum ,(Ntheta,Nphi))
+
+        rEphi_fields_sum  = np.dot(w,rEphi_fields)
+        rEphi_fields_sum  = np.reshape(rEphi_fields_sum ,(Ntheta,Nphi))
+        
+        self.all_qtys={}
+        self.all_qtys['rEPhi'] = rEphi_fields_sum 
+        self.all_qtys['rETheta'] = rEtheta_fields_sum 
+        self.all_qtys['rETotal'] = np.sqrt(np.power(np.abs(rEphi_fields_sum ),2)+np.power(np.abs(rEtheta_fields_sum ),2))
+        self.all_qtys['Theta'] = theta_range
+        self.all_qtys['Phi'] = phi_range
+        self.all_qtys['nPhi'] = Nphi
+        self.all_qtys['nTheta'] = Ntheta
+        pin=np.sum(np.power(np.abs(w),2))
+        self.all_qtys['Pincident'] = pin
+        print(f'Incident Power: {pin}')
+        real_gain = 2*np.pi*np.abs(np.power(self.all_qtys['rETotal'],2))/pin/377
+        self.all_qtys['RealizedGain'] = real_gain
+        self.all_qtys['RealizedGain_dB'] = 10*np.log10(real_gain)
+        max_gain = np.max(10*np.log10(real_gain))
+        print(f'Peak Realized Gain: {max_gain} dB')
+        self.all_qtys['Element_Location'] = array_positions
+        
+        return self.all_qtys
     def get_far_field_mesh(self,qty_str='RealizedGain',convert_to_dB=True):
         
         if convert_to_dB:

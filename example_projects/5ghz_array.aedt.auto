@@ -176,8 +176,8 @@ $begin 'AnsoftProject'
 				$end 'Properties'
 				CompExtID=6
 				$begin 'Parameters'
-					MenuProp('CoSimulator', 'D', '', 'DefaultNetlist', 0)
 					ButtonProp('CosimDefinition', 'D', '', '', 'Edit', 40501, ButtonPropClientData())
+					MenuProp('CoSimulator', 'D', '', 'DefaultNetlist', 0)
 				$end 'Parameters'
 				$begin 'CosimDefinitions'
 					$begin 'CosimDefinition'
@@ -203,8 +203,8 @@ $begin 'AnsoftProject'
 				$end 'Properties'
 				CompExtID=6
 				$begin 'Parameters'
-					MenuProp('CoSimulator', 'D', '', 'DefaultNetlist', 0)
 					ButtonProp('CosimDefinition', 'D', '', '', 'Edit', 40501, ButtonPropClientData())
+					MenuProp('CoSimulator', 'D', '', 'DefaultNetlist', 0)
 				$end 'Parameters'
 				$begin 'CosimDefinitions'
 					$begin 'CosimDefinition'
@@ -3200,7 +3200,16 @@ $begin 'AnsoftProject'
 				$begin 'DatasetDefinitions'
 				$end 'DatasetDefinitions'
 			$end 'DesignDatasets'
-			VariableOrders[0:]
+			$begin 'PostProcessingVariables'
+				PostProcessingVariableProp('ScanFrequency', 'UD', '', '5000000000Hz')
+				PostProcessingVariableProp('ScanAngleTheta', 'UD', '', '0deg')
+				PostProcessingVariableProp('ScanAnglePhi', 'UD', '', '0deg')
+				PostProcessingVariableProp('ScanPhaseShiftA', 'UD', '', '-((ScanFrequency*-6.4447234425e-10*sin(ScanAngleTheta)*cos(ScanAnglePhi)) + (ScanFrequency*3.72086281438e-10*sin(ScanAngleTheta)*sin(ScanAnglePhi))) rad')
+				PostProcessingVariableProp('ScanPhaseShiftB', 'UD', '', '-((ScanFrequency*-6.4447234425e-10*sin(ScanAngleTheta)*cos(ScanAnglePhi)) + (ScanFrequency*-3.72086281438e-10*sin(ScanAngleTheta)*sin(ScanAnglePhi))) rad')
+				PostProcessingVariableProp('ScanMag1', 'UD', '', '1W')
+				PostProcessingVariableProp('ScanPhase1', 'UD', '', '0deg')
+			$end 'PostProcessingVariables'
+			VariableOrders[7: 'ScanFrequency', 'ScanAngleTheta', 'ScanAnglePhi', 'ScanPhaseShiftA', 'ScanPhaseShiftB', 'ScanMag1', 'ScanPhase1']
 			$begin 'Editor3D Doc Preferences'
 				'Plane Background'=true
 				BackgroundColor1=16777215
@@ -5878,175 +5887,175 @@ $begin 'AnsoftProject'
 			FieldType='NoIncidentWave'
 			IncludePortPostProcessing=false
 			UseSpecifiedIncidentPower=false
-			SourceEntry(ID=0, Index=0, Terminal=false, Terminated=false, Magnitude='1W', Phase='0deg')
-			SourceEntry(ID=0, Index=1, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=2, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=3, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=4, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=5, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=6, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=7, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=8, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=9, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=10, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=11, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=12, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=13, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=14, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=15, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=16, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=17, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=18, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=19, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=20, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=21, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=22, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=23, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=24, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=25, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=26, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=27, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=28, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=29, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=30, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=31, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=32, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=33, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=34, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=35, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=36, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=37, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=38, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=39, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=40, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=41, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=42, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=43, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=44, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=45, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=46, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=47, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=48, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=49, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=50, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=51, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=52, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=53, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=54, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=55, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=56, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=57, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=58, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=59, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=60, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=61, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=62, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=63, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=64, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=65, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=66, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=67, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=68, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=69, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=70, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=71, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=72, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=73, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=74, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=75, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=76, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=77, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=78, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=79, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=80, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=81, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=82, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=83, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=84, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=85, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=86, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=87, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=88, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=89, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=90, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=91, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=92, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=93, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=94, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=95, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=96, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=97, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=98, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=99, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=100, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=101, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=102, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=103, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=104, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=105, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=106, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=107, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=108, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=109, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=110, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=111, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=112, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=113, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=114, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=115, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=116, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=117, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=118, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=119, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=120, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=121, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=122, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=123, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=124, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=125, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=126, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=127, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=128, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=129, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=130, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=131, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=132, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=133, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=134, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=135, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=136, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=137, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=138, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=139, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=140, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=141, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=142, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=143, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=144, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=145, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=146, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=147, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=148, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=149, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=150, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=151, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=152, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=153, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=154, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=155, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=156, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=157, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=158, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=159, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=160, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=161, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=162, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=163, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=164, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=165, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=166, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=167, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
-			SourceEntry(ID=0, Index=168, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=0, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=1, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=2, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=3, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=4, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=5, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=6, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=7, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=8, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=9, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=10, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=11, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=12, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=13, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=14, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=15, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=16, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=17, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=18, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=19, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=20, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=21, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=22, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=23, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=24, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=25, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=26, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=27, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=28, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=29, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=30, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=31, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=32, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=33, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=34, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=35, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=36, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=37, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=38, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=39, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=40, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=41, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=42, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=43, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=44, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=45, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=46, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=47, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=48, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=49, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (4*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=50, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=51, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=52, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=53, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=54, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=55, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=56, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=57, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=58, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=59, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=60, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=61, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=62, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (5*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=63, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=64, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=65, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=66, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=67, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=68, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=69, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=70, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=71, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=72, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=73, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=74, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=75, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=76, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (6*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=77, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=78, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=79, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=80, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=81, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=82, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=83, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=84, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=85, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=86, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=87, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=88, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=89, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=90, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=91, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (7*ScanPhaseShiftA + 14*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=92, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=93, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=94, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=95, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=96, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=97, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=98, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=99, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=100, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=101, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=102, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=103, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=104, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=105, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (8*ScanPhaseShiftA + 13*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=106, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=107, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=108, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=109, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=110, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=111, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=112, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=113, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=114, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=115, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=116, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=117, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=118, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (9*ScanPhaseShiftA + 12*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=119, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=120, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=121, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=122, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=123, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=124, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=125, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=126, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=127, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=128, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=129, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=130, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (10*ScanPhaseShiftA + 11*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=131, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=132, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=133, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=134, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=135, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=136, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=137, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=138, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=139, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=140, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=141, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (11*ScanPhaseShiftA + 10*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=142, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=143, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=144, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=145, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=146, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=147, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=148, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=149, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=150, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=151, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (12*ScanPhaseShiftA + 9*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=152, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=153, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=154, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=155, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=156, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=157, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=158, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=159, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=160, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (13*ScanPhaseShiftA + 8*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=161, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=162, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=163, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=164, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=165, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 4*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=166, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 5*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=167, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 6*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=168, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (14*ScanPhaseShiftA + 7*ScanPhaseShiftB)')
 			$begin 'Contexts'
 				NextUniqueID=1
 				MoveBackwards=false
@@ -6055,6 +6064,7 @@ $begin 'AnsoftProject'
 		$begin 'PortFieldDisplay'
 			$begin 'PortFieldDisplay'
 				ScaleFactor=5
+				Solution='Setup1 : LastAdaptive'
 				Frequency='5GHz'
 			$end 'PortFieldDisplay'
 		$end 'PortFieldDisplay'
@@ -6071,8 +6081,6 @@ $begin 'AnsoftProject'
 			$begin 'PlotDefaults'
 				Default_SolutionId=52
 				Default_PlotFolder='Automatic'
-				Default_Phase='0deg'
-				Default_Freq='5GHz'
 			$end 'PlotDefaults'
 			$begin 'FieldsPlotManagerID'
 				NextUniqueID=0
@@ -6104,10 +6112,10 @@ $begin 'AnsoftProject'
 					Polarization='Linear'
 					ThetaStart='0deg'
 					ThetaStop='180deg'
-					ThetaStep='1deg'
+					ThetaStep='2deg'
 					PhiStart='-180deg'
 					PhiStop='180deg'
-					PhiStep='1deg'
+					PhiStep='2deg'
 					UseLocalCS=false
 				$end 'Infinite Sphere1'
 			$end 'FarFieldSetups'
@@ -6194,7 +6202,6 @@ $begin 'AnsoftProject'
 					ID=52
 					Name='LastAdaptive'
 					$begin 'SimDataExtractor'
-						SimValue('GainTotal', 1, 90, true, SimValueID=126, 0, 0, 2, 0, false, false, 1, 1, 0, 1, 1, '', 0, 0)
 						$begin 'Sweeps'
 							$begin 'Sweep'
 								Variable='Freq'
@@ -6248,7 +6255,7 @@ $begin 'AnsoftProject'
 					N='Setup1'
 					V=0
 					Soln(N='AdaptivePass', V=0)
-					Soln(N='LastAdaptive', V=121)
+					Soln(N='LastAdaptive', V=99)
 				$end 'Setup'
 				IQM=0
 			$end 'Version ID Map'
@@ -6328,16 +6335,7 @@ $begin 'AnsoftProject'
 				$begin 'DatasetDefinitions'
 				$end 'DatasetDefinitions'
 			$end 'DesignDatasets'
-			$begin 'PostProcessingVariables'
-				PostProcessingVariableProp('ScanFrequency', 'UD', '', '5000000000Hz')
-				PostProcessingVariableProp('ScanAngleTheta', 'UD', '', '45deg')
-				PostProcessingVariableProp('ScanAnglePhi', 'UD', '', '10deg')
-				PostProcessingVariableProp('ScanPhaseShiftA', 'UD', '', '-((ScanFrequency*-6.4447234425e-10*sin(ScanAngleTheta)*cos(ScanAnglePhi)) + (ScanFrequency*3.72086281438e-10*sin(ScanAngleTheta)*sin(ScanAnglePhi))) rad')
-				PostProcessingVariableProp('ScanPhaseShiftB', 'UD', '', '-((ScanFrequency*-6.4447234425e-10*sin(ScanAngleTheta)*cos(ScanAnglePhi)) + (ScanFrequency*-3.72086281438e-10*sin(ScanAngleTheta)*sin(ScanAnglePhi))) rad')
-				PostProcessingVariableProp('ScanMag1', 'UD', '', '1W')
-				PostProcessingVariableProp('ScanPhase1', 'UD', '', '0deg')
-			$end 'PostProcessingVariables'
-			VariableOrders[7: 'ScanFrequency', 'ScanAngleTheta', 'ScanAnglePhi', 'ScanPhaseShiftA', 'ScanPhaseShiftB', 'ScanMag1', 'ScanPhase1']
+			VariableOrders[0:]
 			$begin 'Editor3D Doc Preferences'
 				'Plane Background'=true
 				BackgroundColor1=16777215
@@ -6355,7 +6353,7 @@ $begin 'AnsoftProject'
 			WorkingCS=1
 			$begin 'GeometryCore'
 				BlockVersionID=3
-				DataVersion=5
+				DataVersion=3
 				NativeKernel='ACIS'
 				NativeKernelVersionID=13
 				Units='mm'
@@ -6372,7 +6370,7 @@ $begin 'AnsoftProject'
 							IDServerObjectTypeID=0
 							IDServerRangeMin=0
 							IDServerRangeMax=2146483647
-							NextUniqueID=160
+							NextUniqueID=157
 							MoveBackwards=false
 						$end 'AnsoftRangedIDServer'
 						$begin 'AnsoftRangedIDServer'
@@ -7069,65 +7067,6 @@ $begin 'AnsoftProject'
 								$end 'Operation'
 							$end 'Operations'
 						$end 'GeometryPart'
-						$begin 'GeometryPart'
-							$begin 'Attributes'
-								Name='Sphere1'
-								Flags='NonModel#'
-								Color='(143 175 143)'
-								Transparency=0
-								PartCoordinateSystem=1
-								UDMId=-1
-								GroupId=-1
-								MaterialValue='"vacuum"'
-								SurfaceMaterialValue='""'
-								SolveInside=true
-								ShellElement=false
-								ShellElementThickness='0mm'
-								IsMaterialEditable=true
-								UseMaterialAppearance=false
-								IsLightweight=false
-								IsAlwaysHidden=false
-							$end 'Attributes'
-							$begin 'Operations'
-								$begin 'Operation'
-									OperationType='Sphere'
-									ID=157
-									ReferenceCoordSystemID=1
-									$begin 'SphereParameters'
-										KernelVersion=13
-										XCenter='61.5mm'
-										YCenter='17.75mm'
-										ZCenter='0mm'
-										Radius='9.20869154657707mm'
-									$end 'SphereParameters'
-									ParentPartID=158
-									ReferenceUDMID=-1
-									IsSuppressed=false
-									$begin 'OperationIdentity'
-										$begin 'Topology'
-											NumLumps=1
-											NumShells=1
-											NumFaces=1
-											NumWires=0
-											NumLoops=0
-											NumCoedges=0
-											NumEdges=0
-											NumVertices=0
-										$end 'Topology'
-										BodyID=158
-										StartFaceID=159
-										StartEdgeID=-1
-										StartVertexID=-1
-										NumNewFaces=1
-										NumNewEdges=0
-										NumNewVertices=0
-										FaceNameAndIDMap()
-										EdgeNameAndIDMap()
-										VertexNameAndIDMap()
-									$end 'OperationIdentity'
-								$end 'Operation'
-							$end 'Operations'
-						$end 'GeometryPart'
 					$end 'ToplevelParts'
 					$begin 'OperandParts'
 					$end 'OperandParts'
@@ -7165,9 +7104,6 @@ $begin 'AnsoftProject'
 						$begin 'model'
 							model(-1)
 						$end 'model'
-						$begin 'sphere'
-							sphere(1)
-						$end 'sphere'
 						$begin 'sub'
 							sub(-1)
 						$end 'sub'
@@ -7265,11 +7201,6 @@ $begin 'AnsoftProject'
 						DependencyObject('GeometryBodyOperation', 151)
 						DependencyObject('GeometryBodyOperation', 12)
 						DependencyObject('GeometryOperation', 149)
-					$end 'DependencyInformation'
-					$begin 'DependencyInformation'
-						NumParents=1
-						DependencyObject('GeometryBodyOperation', 157)
-						DependencyObject('CoordinateSystem', 1)
 					$end 'DependencyInformation'
 				$end 'GeometryDependencies'
 			$end 'GeometryCore'
@@ -8389,20 +8320,20 @@ $begin 'AnsoftProject'
 			FieldType='NoIncidentWave'
 			IncludePortPostProcessing=false
 			UseSpecifiedIncidentPower=false
-			SourceEntry(ID=0, Index=0, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=1, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=2, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (0*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=3, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=4, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=5, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=6, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (1*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=7, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=8, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=9, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=10, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (2*ScanPhaseShiftA + 3*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=11, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 0*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=12, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 1*ScanPhaseShiftB)')
-			SourceEntry(ID=0, Index=13, Terminal=false, Terminated=false, Magnitude='ScanMag1*1', Phase='ScanPhase1 + (3*ScanPhaseShiftA + 2*ScanPhaseShiftB)')
+			SourceEntry(ID=0, Index=0, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=1, Terminal=false, Terminated=false, Magnitude='1W', Phase='0deg')
+			SourceEntry(ID=0, Index=2, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=3, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=4, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=5, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=6, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=7, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=8, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=9, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=10, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=11, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=12, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
+			SourceEntry(ID=0, Index=13, Terminal=false, Terminated=false, Magnitude='0W', Phase='0deg')
 			$begin 'Contexts'
 				NextUniqueID=1
 				MoveBackwards=false
@@ -8428,8 +8359,6 @@ $begin 'AnsoftProject'
 			$begin 'PlotDefaults'
 				Default_SolutionId=52
 				Default_PlotFolder='Automatic'
-				Default_Phase='0deg'
-				Default_Freq='5GHz'
 			$end 'PlotDefaults'
 			$begin 'FieldsPlotManagerID'
 				NextUniqueID=0
@@ -8438,14 +8367,7 @@ $begin 'AnsoftProject'
 				NumPlots=0
 			$end 'FieldsPlotManagerID'
 			$begin 'Report3dInGeomWnd'
-				Report3dNum=1
-				$begin 'Report3dPlot_1'
-					ReportID=1
-					Transparency=0.400000005960464
-					ScaleFactor=0.25
-					Visible=false
-					CoordSys=-1
-				$end 'Report3dPlot_1'
+				Report3dNum=0
 			$end 'Report3dInGeomWnd'
 			$begin 'Report2dInGeomWnd'
 				Report2dNum=0
@@ -8457,12 +8379,12 @@ $begin 'AnsoftProject'
 		$end 'FieldsReporter'
 		$begin 'RadField'
 			$begin 'FarFieldSetups'
-				NextUniqueID=14
+				NextUniqueID=13
 				MoveBackwards=false
 				$begin 'Infinite Sphere1'
 					Type='Infinite Sphere'
 					ID=1
-					VersionID=13
+					VersionID=12
 					UseCustomRadiationSurface=false
 					CSDefinition='Theta-Phi'
 					Polarization='Linear'
@@ -8538,7 +8460,7 @@ $begin 'AnsoftProject'
 				$end 'ParametricArray'
 			$end 'ArraySetup'
 			$begin 'NearFieldSetups'
-				NextUniqueID=14
+				NextUniqueID=13
 				MoveBackwards=false
 			$end 'NearFieldSetups'
 		$end 'RadField'
@@ -8558,7 +8480,6 @@ $begin 'AnsoftProject'
 					ID=52
 					Name='LastAdaptive'
 					$begin 'SimDataExtractor'
-						SimValue('GainTotal', 1, 90, true, SimValueID=201, 0, 0, 2, 0, false, false, 1, 1, 0, 1, 1, '', 0, 0)
 						$begin 'Sweeps'
 							$begin 'Sweep'
 								Variable='Freq'
@@ -8601,69 +8522,6 @@ $begin 'AnsoftProject'
 								Increment=0.0872664625997165
 								CreateIndexedSubsweepFlag=false
 							$end 'PostprocessSweep'
-							$begin 'PostprocessSweep'
-								Variable='ScanFrequency'
-								RegularSweep=1
-								Units='Hz'
-								Minimum=5000000000
-								Maximum=5000000000
-								Increment=0
-								CreateIndexedSubsweepFlag=false
-							$end 'PostprocessSweep'
-							$begin 'PostprocessSweep'
-								Variable='ScanAngleTheta'
-								RegularSweep=1
-								Units='deg'
-								Minimum=0.785398163397448
-								Maximum=0.785398163397448
-								Increment=0
-								CreateIndexedSubsweepFlag=false
-							$end 'PostprocessSweep'
-							$begin 'PostprocessSweep'
-								Variable='ScanAnglePhi'
-								RegularSweep=1
-								Units='deg'
-								Minimum=0.174532925199433
-								Maximum=0.174532925199433
-								Increment=0
-								CreateIndexedSubsweepFlag=false
-							$end 'PostprocessSweep'
-							$begin 'PostprocessSweep'
-								Variable='ScanPhaseShiftA'
-								RegularSweep=1
-								Units='rad'
-								Minimum=2.0154991851308
-								Maximum=2.0154991851308
-								Increment=0
-								CreateIndexedSubsweepFlag=false
-							$end 'PostprocessSweep'
-							$begin 'PostprocessSweep'
-								Variable='ScanPhaseShiftB'
-								RegularSweep=1
-								Units='rad'
-								Minimum=2.47237575897833
-								Maximum=2.47237575897833
-								Increment=0
-								CreateIndexedSubsweepFlag=false
-							$end 'PostprocessSweep'
-							$begin 'PostprocessSweep'
-								Variable='ScanMag1'
-								RegularSweep=1
-								Units='W'
-								Minimum=1
-								Maximum=1
-								Increment=0
-								CreateIndexedSubsweepFlag=false
-							$end 'PostprocessSweep'
-							$begin 'PostprocessSweep'
-								Variable='ScanPhase1'
-								RegularSweep=1
-								Units='deg'
-								Minimum=0
-								Maximum=0
-								Increment=0
-								CreateIndexedSubsweepFlag=false
-							$end 'PostprocessSweep'
 						$end 'Sweeps'
 						IsPortOnly=false
 					$end 'SimDataExtractor'
@@ -8702,23 +8560,10 @@ $begin 'AnsoftProject'
 	$end 'HFSSModel'
 	$begin 'DataInstances'
 		DesignEditor='TopLevel'
-		Refdes('2', 'U3')
 		Refdes('1', 'U2')
+		Refdes('2', 'U3')
 		Refdes('0', 'U1')
 		$begin 'CompInstances'
-			$begin 'Compinst'
-				ID='2'
-				Status='Status'
-				CompName='triangular_lattice_small'
-				GatesInUse()
-				$begin 'Properties'
-					TextProp('ID', 'SRID', '', '2')
-				$end 'Properties'
-				$begin 'Parameters'
-					MenuProp('CoSimulator', 'OHD', '', 'DefaultNetlist', 0)
-					ButtonProp('CosimDefinition', 'OHD', '', '', 'Edit', 40501, ButtonPropClientData())
-				$end 'Parameters'
-			$end 'Compinst'
 			$begin 'Compinst'
 				ID='1'
 				Status='Status'
@@ -8726,6 +8571,19 @@ $begin 'AnsoftProject'
 				GatesInUse()
 				$begin 'Properties'
 					TextProp('ID', 'SRID', '', '1')
+				$end 'Properties'
+				$begin 'Parameters'
+					MenuProp('CoSimulator', 'OHD', '', 'DefaultNetlist', 0)
+					ButtonProp('CosimDefinition', 'OHD', '', '', 'Edit', 40501, ButtonPropClientData())
+				$end 'Parameters'
+			$end 'Compinst'
+			$begin 'Compinst'
+				ID='2'
+				Status='Status'
+				CompName='triangular_lattice_small'
+				GatesInUse()
+				$begin 'Properties'
+					TextProp('ID', 'SRID', '', '2')
 				$end 'Properties'
 				$begin 'Parameters'
 					MenuProp('CoSimulator', 'OHD', '', 'DefaultNetlist', 0)
@@ -8747,270 +8605,24 @@ $begin 'AnsoftProject'
 			$end 'Compinst'
 		$end 'CompInstances'
 		$begin 'Instance'
-			DesignEditor='triangular_lattice_small'
-			ID='2'
+			DesignEditor='triangular_lattice'
+			ID='1'
 			$begin 'HfssDesignInstance'
-				DesignInstanceID=6
+				DesignInstanceID=3
 				$begin 'ReportSetup'
 					$begin 'ReportManager'
 						$begin 'Reports'
-							$begin 'Gain Plot 1'
-								ReportID=1
-								ReportName='Gain Plot 1'
-								$begin 'TraceDef'
-									TraceDefinitionType='TraceDefinition'
-									$begin 'DesignSolnDefn'
-										$begin 'DESIGN_SOLUTION_SIM_VALUE_CONTEXT'
-											DesignID=5
-											SolutionID=52
-											$begin 'REPORT_TYPE_SIM_VALUE_CONTEXT'
-												ReportType=3
-												SimValueContext(0, 0, 2, 0, false, false, 1, 1, 0, 1, 1, '', 0, 0)
-											$end 'REPORT_TYPE_SIM_VALUE_CONTEXT'
-										$end 'DESIGN_SOLUTION_SIM_VALUE_CONTEXT'
-									$end 'DesignSolnDefn'
-									ID=0
-									VersionID=3
-									Name='dB(GainTotal)'
-									TieNameToExpr=true
-									$begin 'Components'
-										$begin 'TraceComponentDefinition'
-											Expr='Phi'
-										$end 'TraceComponentDefinition'
-										$begin 'TraceComponentDefinition'
-											Expr='Theta'
-										$end 'TraceComponentDefinition'
-										$begin 'TraceComponentDefinition'
-											Expr='dB(GainTotal)'
-										$end 'TraceComponentDefinition'
-									$end 'Components'
-									$begin 'ExtendedTraceInfo'
-										NumPoints=0
-										TraceType=0
-										Offset=0
-										XLabel=''
-										SamplingPeriod='0'
-										SamplingPeriodOffset='0'
-										AutoDelay=true
-										DelayValue='0ps'
-										AutoCompCrossAmplitude=true
-										CrossingAmplitude='0mV'
-										YAxis=1
-										AutoCompEyeMeasurementPoint=true
-										EyeMeasurementPoint='0ps'
-										EyePamLow()
-										EyePamVRef()
-										EyePamHigh()
-										EyePamNames()
-										EyePamStrictVRef=false
-									$end 'ExtendedTraceInfo'
-									$begin 'TraceFamiliesDisplayDefinition'
-										DisplayFamiliesType='DisplayAll'
-									$end 'TraceFamiliesDisplayDefinition'
-									$begin 'PointsetDefinition'
-										$begin 'SubsweepDefParamsContainer'
-											$begin '0'
-												SubsweepType='Regular'
-												SubsweepChoiceType='All'
-												SweepVariableName='Phi'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-											$end '0'
-											$begin '1'
-												SubsweepType='Regular'
-												SubsweepChoiceType='All'
-												SweepVariableName='Theta'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-											$end '1'
-											$begin '2'
-												SubsweepType='Regular'
-												SubsweepChoiceType='Selected'
-												SweepVariableName='Freq'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-												ColumnValues(5000000000)
-												ParameterType='DoubleParam'
-												Units='GHz'
-											$end '2'
-											$begin '3'
-												SubsweepType='Specifiable'
-												SubsweepChoiceType='Nominal'
-												SweepVariableName='ScanFrequency'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-											$end '3'
-											$begin '4'
-												SubsweepType='Specifiable'
-												SubsweepChoiceType='Nominal'
-												SweepVariableName='ScanAngleTheta'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-											$end '4'
-											$begin '5'
-												SubsweepType='Specifiable'
-												SubsweepChoiceType='Nominal'
-												SweepVariableName='ScanAnglePhi'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-											$end '5'
-											$begin '6'
-												SubsweepType='Specifiable'
-												SubsweepChoiceType='Nominal'
-												SweepVariableName='ScanMag1'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-											$end '6'
-											$begin '7'
-												SubsweepType='Specifiable'
-												SubsweepChoiceType='Nominal'
-												SweepVariableName='ScanPhase1'
-												AllowSelecteValues=true
-												SweepHasConsistentValues=true
-											$end '7'
-										$end 'SubsweepDefParamsContainer'
-										FamilyBlock()
-									$end 'PointsetDefinition'
-									DesignInstanceID=6
-								$end 'TraceDef'
-							$end 'Gain Plot 1'
 						$end 'Reports'
-						NextUniqueID=2
+						NextUniqueID=0
 						MoveBackwards=false
 						$begin 'NextVersID'
-							NextUniqueID=4
+							NextUniqueID=0
 							MoveBackwards=false
 						$end 'NextVersID'
 					$end 'ReportManager'
 					$begin 'Reports'
-						$begin 'Gain Plot 1'
-							ReportID=1
-							$begin 'Report3D'
-								name='Gain Plot 1'
-								ReportID=1
-								hasWindowBeenOpened=false
-								ReportType=3
-								DisplayType=7
-								$begin 'Graph3DsV2'
-									$begin 'Graph3DV2'
-										TraceDefID=0
-										GraphName='dB(GainTotal)'
-										$begin 'Plot3DPolarDocument'
-											$begin 'Plot3DDataSources'
-												$begin 'Plot3DPlotDataSource'
-													ID=0
-													Name='Plot'
-												$end 'Plot3DPlotDataSource'
-												$begin 'Plot3DBackgroundDataSource'
-													ID=1
-													Name='Background'
-												$end 'Plot3DBackgroundDataSource'
-												$begin 'Plot3DHeaderDataSource'
-													ID=2
-													Name='Header'
-												$end 'Plot3DHeaderDataSource'
-												$begin 'Plot3DAxisDataSource'
-													ID=3
-													Name='Phi'
-												$end 'Plot3DAxisDataSource'
-												$begin 'Plot3DAxisDataSource'
-													ID=4
-													Name='Theta'
-												$end 'Plot3DAxisDataSource'
-												$begin 'Plot3DAxisDataSource'
-													ID=5
-													Name='Rho'
-												$end 'Plot3DAxisDataSource'
-												$begin 'Plot3DGridDataSource'
-													ID=6
-													Name='phi-rho'
-												$end 'Plot3DGridDataSource'
-												$begin 'Plot3DGridDataSource'
-													ID=7
-													Name='theta-rho'
-												$end 'Plot3DGridDataSource'
-												$begin 'Plot3DGridDataSource'
-													ID=8
-													Name='theta-rho-phi(0)'
-												$end 'Plot3DGridDataSource'
-												$begin 'Plot3DColorKeyDataSource'
-													ID=9
-													Name='ColorKey'
-												$end 'Plot3DColorKeyDataSource'
-												$begin 'Plot3DPolarCurveDataSource'
-													ID=10
-													Name='dB(GainTotal)'
-												$end 'Plot3DPolarCurveDataSource'
-											$end 'Plot3DDataSources'
-											$begin 'Plot3DAttributesManager'
-												$begin 'PlotAttributeStore'
-												$end 'PlotAttributeStore'
-											$end 'Plot3DAttributesManager'
-										$end 'Plot3DPolarDocument'
-									$end 'Graph3DV2'
-								$end 'Graph3DsV2'
-								$begin 'Plot3DPolarDocument'
-									$begin 'Plot3DDataSources'
-										$begin 'Plot3DPlotDataSource'
-											ID=0
-											Name='Plot'
-										$end 'Plot3DPlotDataSource'
-										$begin 'Plot3DBackgroundDataSource'
-											ID=1
-											Name='Background'
-										$end 'Plot3DBackgroundDataSource'
-										$begin 'Plot3DHeaderDataSource'
-											ID=2
-											Name='Header'
-										$end 'Plot3DHeaderDataSource'
-										$begin 'Plot3DAxisDataSource'
-											ID=3
-											Name='Phi'
-										$end 'Plot3DAxisDataSource'
-										$begin 'Plot3DAxisDataSource'
-											ID=4
-											Name='Theta'
-										$end 'Plot3DAxisDataSource'
-										$begin 'Plot3DAxisDataSource'
-											ID=5
-											Name='Rho'
-										$end 'Plot3DAxisDataSource'
-										$begin 'Plot3DGridDataSource'
-											ID=6
-											Name='phi-rho'
-										$end 'Plot3DGridDataSource'
-										$begin 'Plot3DGridDataSource'
-											ID=7
-											Name='theta-rho'
-										$end 'Plot3DGridDataSource'
-										$begin 'Plot3DGridDataSource'
-											ID=8
-											Name='theta-rho-phi(0)'
-										$end 'Plot3DGridDataSource'
-										$begin 'Plot3DColorKeyDataSource'
-											ID=9
-											Name='ColorKey'
-										$end 'Plot3DColorKeyDataSource'
-										$begin 'Plot3DPolarCurveDataSource'
-											ID=10
-											Name='dB(GainTotal)'
-										$end 'Plot3DPolarCurveDataSource'
-									$end 'Plot3DDataSources'
-									$begin 'Plot3DAttributesManager'
-										$begin 'PlotAttributeStore'
-										$end 'PlotAttributeStore'
-									$end 'Plot3DAttributesManager'
-								$end 'Plot3DPolarDocument'
-							$end 'Report3D'
-						$end 'Gain Plot 1'
 					$end 'Reports'
 					$begin 'ReportsWindowInfoList'
-						$begin 'Gain Plot 1'
-							ReportID=1
-							$begin 'WindowInfoList'
-								R3DWindowPos(Report3D(View(WindowPos(5, -1, -1, -8, -31, 26, 26, 1026, 371))))
-							$end 'WindowInfoList'
-						$end 'Gain Plot 1'
 					$end 'ReportsWindowInfoList'
 				$end 'ReportSetup'
 				$begin 'Properties'
@@ -9022,18 +8634,18 @@ $begin 'AnsoftProject'
 			$end 'HfssDesignInstance'
 		$end 'Instance'
 		$begin 'Instance'
-			DesignEditor='triangular_lattice'
-			ID='1'
+			DesignEditor='triangular_lattice_small'
+			ID='2'
 			$begin 'HfssDesignInstance'
-				DesignInstanceID=3
+				DesignInstanceID=6
 				$begin 'ReportSetup'
 					$begin 'ReportManager'
 						$begin 'Reports'
 						$end 'Reports'
-						NextUniqueID=2
+						NextUniqueID=0
 						MoveBackwards=false
 						$begin 'NextVersID'
-							NextUniqueID=2
+							NextUniqueID=0
 							MoveBackwards=false
 						$end 'NextVersID'
 					$end 'ReportManager'

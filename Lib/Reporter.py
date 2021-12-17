@@ -265,7 +265,7 @@ class Report_Module():
         ff.get_far_field_mesh(qty_str = qty_str,convert_to_dB=convert_to_dB)
         
             
-        engine = MyCustomRoutine2(ff)
+        uf = update_farfield(ff)
         #engine.ff = ff
         
         #plot everything together
@@ -278,15 +278,15 @@ class Report_Module():
         
 
 
-        p.add_slider_widget(engine.update_phi, rng=[0, 360], value=0, title='Phi', 
+        p.add_slider_widget(uf.update_phi, rng=[0, 360], value=0, title='Phi', 
                     pointa=(.35, .1), pointb=(.64, .1),style='modern',event_type='always')
-        p.add_slider_widget(engine.update_theta, rng=[-180, 180], value=0, title='Theta', 
+        p.add_slider_widget(uf.update_theta, rng=[-180, 180], value=0, title='Theta', 
                     pointa=(.67, .1), pointb=(.98, .1),style='modern',event_type='always')
         
         sargs = dict(height=0.4, vertical=True, position_x=0.05, position_y=0.5)
-        #ff_mesh_inst = p.add_mesh(engine.output,smooth_shading=True,cmap="jet",scalar_bar_args=sargs,opacity=0.5)
+        #ff_mesh_inst = p.add_mesh(uf.output,smooth_shading=True,cmap="jet",scalar_bar_args=sargs,opacity=0.5)
         #not sure why, but smooth_shading causes this to not update
-        ff_mesh_inst = p.add_mesh(engine.output,cmap="jet",scalar_bar_args=sargs)
+        ff_mesh_inst = p.add_mesh(uf.output,cmap="jet",scalar_bar_args=sargs)
 
 
         if cad_mesh:
@@ -317,10 +317,77 @@ class Report_Module():
             p.add_text('Show Geometry', position=(70,75), color='black', font_size=12)
         p.show()
         
-        return p
+
         
         
- 
+    def polar_plot_3d_pyvista_2beams(self,ff,
+                            qty_str = 'RealizedGain',
+                            convert_to_dB=True,
+                            cad_mesh=None,
+                            position = np.zeros(3),
+                            rotation = np.eye(3)):
+        
+        ff.beamform_2beams(phi_scan1=0,theta_scan1=0,phi_scan2=0,theta_scan2=0)
+        ff.get_far_field_mesh(qty_str = qty_str,convert_to_dB=convert_to_dB)
+        
+            
+        uf = update_farfield_2beams(ff)
+        #engine.ff = ff
+        
+        #plot everything together
+        rotation_euler = self.rotationMatrixToEulerAngles(rotation)*180/np.pi
+
+
+        p = pv.Plotter()
+
+        
+        
+
+
+        p.add_slider_widget(uf.update_phi1, rng=[0, 360], value=0, title='Phi1', 
+                    pointa=(.35, .1), pointb=(.64, .1),style='modern',event_type='always')
+        p.add_slider_widget(uf.update_theta1, rng=[-180, 180], value=0, title='Theta1', 
+                    pointa=(.67, .1), pointb=(.98, .1),style='modern',event_type='always')
+        
+        p.add_slider_widget(uf.update_phi2, rng=[0, 360], value=0, title='Phi2', 
+                    pointa=(.35, .25), pointb=(.64, .25),style='modern',event_type='always')
+        p.add_slider_widget(uf.update_theta2, rng=[-180, 180], value=0, title='Theta2', 
+                    pointa=(.67, .25), pointb=(.98, .25),style='modern',event_type='always')
+        sargs = dict(height=0.4, vertical=True, position_x=0.05, position_y=0.5)
+        #ff_mesh_inst = p.add_mesh(uf.output,smooth_shading=True,cmap="jet",scalar_bar_args=sargs,opacity=0.5)
+        #not sure why, but smooth_shading causes this to not update
+        ff_mesh_inst = p.add_mesh(uf.output,cmap="jet",scalar_bar_args=sargs)
+
+
+        if cad_mesh:
+            def toggle_vis_ff(flag):
+                ff_mesh_inst.SetVisibility(flag)
+            def toggle_vis_cad(flag):
+                cad.SetVisibility(flag)
+            def scale(value=1):
+                ff_mesh_inst.SetScale(value,value,value)
+                ff_mesh_inst.SetPosition(position)
+                ff_mesh_inst.SetOrientation(rotation_euler)
+                #p.add_mesh(ff_mesh, smooth_shading=True,cmap="jet")
+                return
+
+
+            ff_toggle = p.add_checkbox_button_widget(toggle_vis_ff, value=True)
+            p.add_text('Show Far Fields', position=(70,25), color='black', font_size=12)
+            slider_max= int(np.ceil(self.all_max))*2
+            scale_slider = p.add_slider_widget(scale, [0, slider_max], title='Scale Plot',value=int(slider_max/2))
+
+            if 'MaterialIds' in cad_mesh.array_names:
+                color_display_type = cad_mesh['MaterialIds']
+            else:
+                color_display_type=None
+            cad = p.add_mesh(cad_mesh,scalars=color_display_type,show_scalar_bar=False,opacity=0.5)
+    
+            cad_toggle = p.add_checkbox_button_widget(toggle_vis_cad, value=True,position=(10,70))
+            p.add_text('Show Geometry', position=(70,75), color='black', font_size=12)
+        p.show()
+        
+
 
     def find_nearest(self,array,value):
         idx = np.searchsorted(array, value, side="left")
@@ -353,7 +420,7 @@ class Report_Module():
         return file_name
     
 
-class MyCustomRoutine2():
+class update_farfield():
     def __init__(self, ff):
         self.output = ff.mesh
         self._phi=0
@@ -377,3 +444,36 @@ class MyCustomRoutine2():
         self._theta = theta
         self._update_both()
         
+class update_farfield_2beams():
+    def __init__(self, ff):
+        self.output = ff.mesh
+        self._phi1=0
+        self._theta1=0
+        self._phi2=0
+        self._theta2=0
+        # default parameters
+        self.ff = ff
+        self.qty_str='RealizedGain'
+        self.convert_to_dB=True
+
+    def _update_both(self):
+        self.ff.beamform_2beams(phi_scan1=self._phi1, theta_scan1=self._theta1,
+                                phi_scan2=self._phi2, theta_scan2=self._theta2)
+        self.ff.get_far_field_mesh(self.qty_str,self.convert_to_dB)
+        self.output.overwrite(self.ff.mesh)
+        return
+    
+    def update_phi1(self, phi1):
+        self._phi1 = phi1
+        self._update_both()
+        
+    def update_theta1(self, theta1):
+        self._theta1 = theta1
+        self._update_both()
+    def update_phi2(self, phi2):
+        self._phi2 = phi2
+        self._update_both()
+        
+    def update_theta2(self, theta2):
+        self._theta2 = theta2
+        self._update_both()
