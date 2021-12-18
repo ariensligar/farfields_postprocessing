@@ -86,9 +86,9 @@ def main(project_name,design_name,solution_setup_name=None,ff_setup_name='Infini
         #I added a simple demo to demonstrate 2 beams being excited at the same time
         #uncomment the lines below to try the demo
         
-        # reports.polar_plot_3d_pyvista_2beams(ff,qty_str = 'RealizedGain',
-        #                                     convert_to_dB=True,
-        #                                     cad_mesh=cad_mesh)
+        reports.polar_plot_3d_pyvista_2beams(ff,qty_str = 'RealizedGain',
+                                            convert_to_dB=True,
+                                            cad_mesh=cad_mesh)
 
         
 if __name__ == "__main__":
