@@ -29,7 +29,7 @@ design_name = "triangular_lattice"
 solution_setup_name = 'Setup1 : LastAdaptive'
 ff_setup_name = 'Infinite Sphere1'
 freq = 5e9
-taper='flat' #can be cosine triangular hamming or flat
+taper='hamming' #can be cosine triangular hamming or flat
 
 ###############################################################################
 #
@@ -47,6 +47,7 @@ def main(project_name,design_name,solution_setup_name=None,ff_setup_name='Infini
         if ff_setup_name not in aedt.ff_setups_names:
             ff_setup_name =ff_setup.insert_infinite_sphere(setup_name = ff_setup_name,overwrite = False,cs_name='Global')
         
+        #get all teh embedded element
         eep_dict = ff_setup.export_all_ffd(ff_setup_name,
                                      freq=freq,
                                      setup_name = solution_setup_name,

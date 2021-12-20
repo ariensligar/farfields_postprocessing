@@ -248,6 +248,7 @@ class Report_Module():
         else:
             print('WARNING: Unable to display CAD Geometry, ' + cad_file + ' is not found')
         
+        #maximum size of all geometry
         self.all_max = np.max(np.array([self.xmax,self.ymax,self.zmax]))
         elapsed_time = walltime.time()-time_before
         print(f'Exporting Geometry...Done: {elapsed_time}seconds')
@@ -262,18 +263,16 @@ class Report_Module():
                             rotation = np.eye(3)):
         
         ff.beamform(phi_scan=0,theta_scan=0)
-        ff.get_far_field_mesh(qty_str = qty_str,convert_to_dB=convert_to_dB)
+        plot_min = -40
+        ff.get_far_field_mesh(qty_str = qty_str,convert_to_dB=convert_to_dB,mesh_limits=[plot_min,ff.max_gain])
         
-            
-        uf = update_farfield(ff)
-        #engine.ff = ff
         
         #plot everything together
         rotation_euler = self.rotationMatrixToEulerAngles(rotation)*180/np.pi
 
 
         p = pv.Plotter()
-
+        uf = update_farfield(ff)
         
         
 
@@ -286,7 +285,8 @@ class Report_Module():
         sargs = dict(height=0.4, vertical=True, position_x=0.05, position_y=0.5)
         #ff_mesh_inst = p.add_mesh(uf.output,smooth_shading=True,cmap="jet",scalar_bar_args=sargs,opacity=0.5)
         #not sure why, but smooth_shading causes this to not update
-        ff_mesh_inst = p.add_mesh(uf.output,cmap="jet",scalar_bar_args=sargs)
+        
+        ff_mesh_inst = p.add_mesh(uf.output,cmap="jet",clim=[plot_min, ff.max_gain],scalar_bar_args=sargs)
 
 
         if cad_mesh:
@@ -304,8 +304,10 @@ class Report_Module():
 
             ff_toggle = p.add_checkbox_button_widget(toggle_vis_ff, value=True)
             p.add_text('Show Far Fields', position=(70,25), color='black', font_size=12)
-            slider_max= int(np.ceil(self.all_max))*2
-            scale_slider = p.add_slider_widget(scale, [0, slider_max], title='Scale Plot',value=int(slider_max/2))
+            
+            slider_max=int(np.ceil(self.all_max/2/ff.max_gain))
+
+            scale_slider = p.add_slider_widget(scale, [0, slider_max], title='Scale Plot',value=slider_max/2)
 
             if 'MaterialIds' in cad_mesh.array_names:
                 color_display_type = cad_mesh['MaterialIds']
@@ -331,7 +333,7 @@ class Report_Module():
         ff.get_far_field_mesh(qty_str = qty_str,convert_to_dB=convert_to_dB)
         
             
-        uf = update_farfield_2beams(ff)
+        uf = update_farfield_2beams(ff,max_value=ff.max_gain)
         #engine.ff = ff
         
         #plot everything together
@@ -356,7 +358,8 @@ class Report_Module():
         sargs = dict(height=0.4, vertical=True, position_x=0.05, position_y=0.5)
         #ff_mesh_inst = p.add_mesh(uf.output,smooth_shading=True,cmap="jet",scalar_bar_args=sargs,opacity=0.5)
         #not sure why, but smooth_shading causes this to not update
-        ff_mesh_inst = p.add_mesh(uf.output,cmap="jet",scalar_bar_args=sargs)
+        plot_min =  ff.min_gain
+        ff_mesh_inst = p.add_mesh(uf.output,cmap="jet",clim=[plot_min, ff.max_gain],scalar_bar_args=sargs)
 
 
         if cad_mesh:
@@ -374,8 +377,8 @@ class Report_Module():
 
             ff_toggle = p.add_checkbox_button_widget(toggle_vis_ff, value=True)
             p.add_text('Show Far Fields', position=(70,25), color='black', font_size=12)
-            slider_max= int(np.ceil(self.all_max))*2
-            scale_slider = p.add_slider_widget(scale, [0, slider_max], title='Scale Plot',value=int(slider_max/2))
+            slider_max=int(np.ceil(self.all_max/2/ff.max_gain))
+            scale_slider = p.add_slider_widget(scale, [0, slider_max], title='Scale Plot',value=slider_max/2)
 
             if 'MaterialIds' in cad_mesh.array_names:
                 color_display_type = cad_mesh['MaterialIds']
@@ -421,7 +424,8 @@ class Report_Module():
     
 
 class update_farfield():
-    def __init__(self, ff):
+    def __init__(self,ff):
+
         self.output = ff.mesh
         self._phi=0
         self._theta=0
@@ -432,7 +436,10 @@ class update_farfield():
 
     def _update_both(self):
         self.ff.beamform(phi_scan=self._phi, theta_scan=self._theta)
+        #perc_of_maxgain= self.ff.max_gain/self.max_value
+
         self.ff.get_far_field_mesh(self.qty_str,self.convert_to_dB)
+
         self.output.overwrite(self.ff.mesh)
         return
     
@@ -445,7 +452,8 @@ class update_farfield():
         self._update_both()
         
 class update_farfield_2beams():
-    def __init__(self, ff):
+    def __init__(self, ff,max_value=1):
+        self.max_value = max_value
         self.output = ff.mesh
         self._phi1=0
         self._theta1=0
@@ -460,6 +468,9 @@ class update_farfield_2beams():
         self.ff.beamform_2beams(phi_scan1=self._phi1, theta_scan1=self._theta1,
                                 phi_scan2=self._phi2, theta_scan2=self._theta2)
         self.ff.get_far_field_mesh(self.qty_str,self.convert_to_dB)
+        current_max = np.max(self.ff.mesh['FarFieldData'])
+        delta = self.max_value-current_max
+        self.ff.mesh['FarFieldData'] = self.ff.mesh['FarFieldData']-delta
         self.output.overwrite(self.ff.mesh)
         return
     

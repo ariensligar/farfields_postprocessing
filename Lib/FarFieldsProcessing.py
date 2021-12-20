@@ -387,8 +387,9 @@ class Load_FF_Fields():
         real_gain = 2*np.pi*np.abs(np.power(self.all_qtys['rETotal'],2))/pin/377
         self.all_qtys['RealizedGain'] = real_gain
         self.all_qtys['RealizedGain_dB'] = 10*np.log10(real_gain)
-        max_gain = np.max(10*np.log10(real_gain))
-        print(f'Peak Realized Gain: {max_gain} dB')
+        self.max_gain = np.max(10*np.log10(real_gain))
+        self.min_gain = np.min(10*np.log10(real_gain))
+        print(f'Peak Realized Gain: {self.max_gain} dB')
         self.all_qtys['Element_Location'] = array_positions
         
         return self.all_qtys
@@ -505,25 +506,31 @@ class Load_FF_Fields():
         real_gain = 2*np.pi*np.abs(np.power(self.all_qtys['rETotal'],2))/pin/377
         self.all_qtys['RealizedGain'] = real_gain
         self.all_qtys['RealizedGain_dB'] = 10*np.log10(real_gain)
-        max_gain = np.max(10*np.log10(real_gain))
-        print(f'Peak Realized Gain: {max_gain} dB')
+        self.max_gain = np.max(10*np.log10(real_gain))
+        self.min_gain = np.min(10*np.log10(real_gain))
+        print(f'Peak Realized Gain: {self.max_gain} dB')
         self.all_qtys['Element_Location'] = array_positions
         
         return self.all_qtys
-    def get_far_field_mesh(self,qty_str='RealizedGain',convert_to_dB=True):
+    def get_far_field_mesh(self,qty_str='RealizedGain',convert_to_dB=True,mesh_limits=[0,1]):
         
+
         if convert_to_dB:
             ff_data = 10*np.log10(self.all_qtys[qty_str])
-            #renormalize to 0 and 1 
-            ff_max_dB = np.max(ff_data)
-            ff_min_dB = np.min(ff_data)
-            ff_data_renorm = (ff_data-ff_min_dB)/(ff_max_dB-ff_min_dB)
+            
         else:
             ff_data = self.all_qtys[qty_str]
-            #renormalize to 0 and 1 
-            ff_max = np.max(ff_data)
-            ff_min = np.min(ff_data)
-            ff_data_renorm = (ff_data-ff_max)/(ff_max-ff_min)
+        #threshold values below certain value
+        #ff_data = np.where(ff_data < mesh_limits[0], mesh_limits[0], ff_data)
+        #shift data so all points are positive. Needed to correctly change plot
+        #scale as magnitude changes. This keeps plot size consistent for different
+        #magintudes
+        if ff_data.min()<0:
+            ff_data_renorm = ff_data+np.abs(ff_data.min())
+        else:
+            ff_data_renorm=ff_data
+        # ff_data_renorm = np.interp(ff_data, (ff_data.min(), ff_data.max()), 
+        #                                (mesh_limits[0], ff_data.max()))
         
             
         theta = np.deg2rad(np.array(self.all_qtys['Theta']))
@@ -544,5 +551,6 @@ class Load_FF_Fields():
         ff_mesh = pv.StructuredGrid(x,y,z)
         #ff_mesh.scale(ff_scale)
         #ff_mesh.translate([float(position[0]),float(position[1]),float(position[2])])
+        #this store the actual values of gain, that are used for color coating
         ff_mesh['FarFieldData'] = mag
         self.mesh = ff_mesh
