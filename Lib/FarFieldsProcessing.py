@@ -9,6 +9,7 @@ import os
 import math
 import pyvista as pv
 import time as walltime
+import pickle
 class Load_FF_Fields():
     '''
     Load and compute near field data as defined in the codebook through superpostion
@@ -45,6 +46,7 @@ class Load_FF_Fields():
         time_before = walltime.time()
         print('Loading Embedded Element Patterns...')
         self.data_dict = {}
+        self.data_for_eep_export = {}
         self.freq = 1e9
         self.taper='flat'
 
@@ -81,6 +83,7 @@ class Load_FF_Fields():
                     temp_dict['rEPhi']=Ephi
                     
                     self.data_dict[port]=temp_dict
+                    self.data_for_eep_export[port]=[theta_range,phi_range,Etheta,Ephi]
                 else:
                     valid_ffd=False
                 
@@ -101,7 +104,7 @@ class Load_FF_Fields():
             print('ERROR: Far Field Files are Missing')
     
         self.valid_ffd = valid_ffd
-    
+        self.lattice_vectors = lattice_vectors
         self.Ax = float(lattice_vectors[0])
         self.Ay = float(lattice_vectors[1])
         self.Bx = float(lattice_vectors[3])
@@ -554,3 +557,21 @@ class Load_FF_Fields():
         #this store the actual values of gain, that are used for color coating
         ff_mesh['FarFieldData'] = mag
         self.mesh = ff_mesh
+
+    def save_eep(self,path,file_name):
+
+        lattice_vectors = self.lattice_vectors
+
+
+        for_output_save = {}
+        for_output_save = {'all_eep':self.data_for_eep_export,
+                           'lattice_vectors':lattice_vectors}
+
+        eep_filename = file_name  + '.eep'
+        save_results_file = f'{path}/{eep_filename}'
+        print('################### EEP FILE EXPORT #####################')
+        print('INFO: *.eep file exported to ' + save_results_file)
+        f = open(save_results_file, 'wb+')
+        pickle.dump(for_output_save, f)
+        f.close()
+        return save_results_file
