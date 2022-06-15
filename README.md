@@ -7,7 +7,7 @@ Other options exists, one area that you may want to consider changing is the pyt
 
 ### Python environment manager
 Install Mini-Forge:
-hhttps://github.com/conda-forge/miniforge
+https://github.com/conda-forge/miniforge
 
 # Creating Environment
 
