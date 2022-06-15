@@ -6,8 +6,8 @@ Here is one way to get everything up and running.
 Other options exists, one area that you may want to consider changing is the python envionrment manager. It doesn't matter what evionrment manager you use, as long as you can install all the required packages
 
 ### Python environment manager
-Install anaconda:
-https://repo.anaconda.com/archive/Anaconda3-2021.05-Windows-x86_64.exe
+Install Mini-Forge:
+hhttps://github.com/conda-forge/miniforge
 
 # Creating Environment
 
@@ -32,17 +32,21 @@ you will also need to install,
 ```
 pip install spyder-kernels
 ```
-note, depending on the version of spyder, you may need a specific version of spyder-kernals. 
-For example Spyder 5.2 needs
+note, depending on the version of spyder, you may need a specific version of spyder-kernels. 
+
 ```
-pip install spyder-kernels==2.2.0
+pip install spyder-kernels
 ```
 
 once this is installed, open up spyder and go to the menu Tool> Preferences > Python Interpreter
-set the python interpreter to the one used in your anaconda environment, something like...
+set the python interpreter to the one used in your environment, something like...
 
 ```
 C:\Users\<username>\Anaconda3\envs\ff_postprocessing\python.exe
+
+or
+
+C:\Users\<username>\.conda\envs\ff_postprocessing\python.exe
 ```
 
 Open AEDT example project of any project with a finite arryay defined. Within spyder you can run Main.py
