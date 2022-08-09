@@ -125,7 +125,7 @@ class FarField_Utils():
                     "ExportFileName:="    , export_path  + exported_name_base + '.ffd',
                     "SetupName:="        , ff_setup_name,
                     "IntrinsicVariationKey:=", "Freq=\'"+str(freq)+"\'",
-                    "DesignVariationKey:="    , "",
+                    "DesignVariationKey:="    , oDesign.GetNominalVariation(),
                     "SolutionName:="    , setup_name
                 ])
             elapsed_time = walltime.time()-time_before
@@ -140,7 +140,7 @@ class FarField_Utils():
             
             path_dict={}
             for pattern in lines:
-                if len(pattern)==2:
+                if len(pattern)>=2:
                     port = pattern[0]
                     if ':' in port:
                         port = port.split(':')[0]

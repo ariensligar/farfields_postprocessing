@@ -240,7 +240,7 @@ class Report_Module():
                         self.xmax=offset_xyz[0]*2
                     if np.abs(2*offset_xyz[1])>self.ymax:#assume array is centere, factor of 2
                         self.ymax=offset_xyz[1]*2
-                    translated_mesh.translate(offset_xyz)
+                    translated_mesh.translate(offset_xyz,inplace=True)
                     meshes+=translated_mesh
             else:
                     translated_mesh.translate(self.data['Element_Location'][each]*sf)

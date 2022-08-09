@@ -44,7 +44,7 @@ taper='hamming' #can be cosine triangular hamming or flat
 def main(project_name,design_name,solution_setup_name=None,ff_setup_name='Infinite_Sphere1',freq='',taper='flat',export_eep=False):
 
 
-    with Hfss(non_graphical=False, new_desktop_session=False,specified_version='2022.1') as aedtapp:
+    with Hfss(project_name,design_name,non_graphical=False, new_desktop_session=False,specified_version='2022.2') as aedtapp:
         aedt = AEDTutils(aedtapp,project_name=project_name,design_name=design_name)
 
         ff_setup = FarField_Utils(aedt)
@@ -55,7 +55,7 @@ def main(project_name,design_name,solution_setup_name=None,ff_setup_name='Infini
         eep_dict = ff_setup.export_all_ffd(ff_setup_name,
                                      freq=freq,
                                      setup_name = solution_setup_name,
-                                     overwrite=False)
+                                     overwrite=True)
         
         lattice_vectors = ff_setup.get_lattice_vectors(aedt.model_units)
         

@@ -341,7 +341,7 @@ class Load_FF_Fields():
             index_str = self.GetArrayIndex(port_name)
             a = int(index_str[0])
             b = int(index_str[1])
-            w_mag = np.round(np.abs(self.AssignWeight(a, b,taper=self.taper)),3)
+            w_mag = np.round(np.abs(self.AssignWeight(a, b,taper=self.taper)),6)
             w_ang = (a*phase_shift_A_rad+b*phase_shift_B_rad)
             # ToDo check for driven modal or terminal
             w_dict[port_name] = np.sqrt(w_mag)*np.exp(1j*w_ang)
