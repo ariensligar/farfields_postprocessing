@@ -220,7 +220,7 @@ class Report_Module():
         selected_objects = oEditor.GetSelections()
         print('TIP: Geometry selected in AEDT will be displayed along with far field pattern')
         print('TIP: IF no selected geometry, all model objects will be displayed')
-        if len(selected_objects)>=1:
+        if len(selected_objects) >= 1:
             objects_to_display = selected_objects
         else:
             objects_to_display = reduced_model_objects
@@ -272,6 +272,9 @@ class Report_Module():
 
 
         p = pv.Plotter()
+        marker_args = dict(cone_radius=0.6, shaft_length=0.7, tip_length=0.3, ambient=0.5, label_size=(0.4, 0.16))
+        _ = p.add_axes(line_width=5, marker_args=marker_args)
+
         uf = update_farfield(ff)
         
         
